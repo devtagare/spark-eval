@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<configuration>
+  <property>
+    <name>dt.attr.MASTER_MEMORY_MB</name>
+    <value>1024</value>
+  </property>
+
+  <property>
+    <name>dt.attr.CONTAINER_JVM_OPTIONS</name>
+    <value>-Xloggc:&lt;LOG_DIR&gt;/gc.log -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCDateStamps</value>
+  </property>
+
+  <property>
+    <name>dt.application.FishInABarrelApp.operator.TSGenerator.prop.numTuples</name>
+    <value>20000</value>
+  </property>
+
+  <property>
+    <name>dt.application.FishInABarrelApp.operator.ApexStoreCounter.prop.batchSize</name>
+    <value>1000</value>
+  </property>
+
+  <property>
+    <name>dt.application.FishInABarrelApp.operator.InMemoryCounter.prop.batchSize</name>
+    <value>1000</value>
+  </property>
+
+  <property>
+    <name>dt.application.FishInABarrelApp.operator.ApexStoreCounter.prop.batchesCounted</name>
+    <value>0</value>
+  </property>
+
+  <property>
+    <name>dt.application.FishInABarrelApp.operator.InMemoryCounter.prop.batchesCounted</name>
+    <value>0</value>
+  </property>
+
+  <!-->Topic from where the initial timestamp is written by input generator<-->
+  <property>
+    <name>dt.operator.kakfaTSOutput.prop.topic</name>
+    <value>input</value>
+  </property>
+  <property>
+    <name>dt.operator.kakfaTSOutput.prop.producerProperties</name>
+    <value>serializer.class=kafka.serializer.StringEncoder,producer.type=sync,metadata.broker.list=node5.morado.com:9092,batch.size=10</value>
+  </property>
+
+
+
+  <!-->Kafka topic that will be consumed by Apex and Spark jobs<-->
+  <property>
+    <name>dt.application.FishInABarrelApp.operator.KafkaTSConsumer.prop.initialPartitionCount</name>
+    <value>1</value>
+  </property>
+  <property>
+    <name>dt.application.FishInABarrelApp.operator.KafkaTSConsumer.prop.topics</name>
+    <value>input</value>
+  </property>
+  <property>
+    <name>dt.application.FishInABarrelApp.operator.KafkaTSConsumer.prop.clusters</name>
+    <value>node5.morado.com:9092</value>  <!-- broker (NOT zookeeper) address -->
+  </property>
+
+
+
+  <!-->Topic from where the timestamp details are consumed by the referee<-->
+  <property>
+    <name>dt.operator.KafkaStoreOutput.prop.topic</name>
+    <value>output</value>
+  </property>
+  <property>
+    <name>dt.operator.KafkaStoreOutput.prop.producerProperties</name>
+    <value>serializer.class=kafka.serializer.StringEncoder,producer.type=sync,metadata.broker.list=node5.morado.com:9092,batch.size=10</value>
+  </property>
+
+  <!-->Kafka topic from which Apex app reads the processing timestamp details of different apps<-->
+  <property>
+    <name>dt.application.FishInABarrelApp.operator.KafkaStoreInput.prop.initialPartitionCount</name>
+    <value>1</value>
+  </property>
+  <property>
+    <name>dt.application.FishInABarrelApp.operator.KafkaStoreInput.prop.topics</name>
+    <value>output</value>
+  </property>
+  <property>
+    <name>dt.application.FishInABarrelApp.operator.KafkaStoreInput.prop.clusters</name>
+    <value>node5.morado.com:9092</value>  <!-- broker (NOT zookeeper) address -->
+  </property>
+
+
+  <property>
+    <name>dt.application.*.operator.QueryResult.topic</name>
+    <value>fishinabarrelQueryResult</value>
+  </property>
+  <property>
+    <name>dt.application.*.operator.SnapshotServer.embeddableQueryInfoProvider.topic</name>
+    <value>fishinabarrelQuery</value>
+  </property>
+
+
+  <property>
+    <name>dt.application.FishInABarrelApp.operator.referee.attr.MEMORY_MB</name>
+    <value>8192</value>
+  </property>
+
+  <property>
+    <name>dt.application.FishInABarrelApp.operator.referee.attr.MEMORY_MB</name>
+    <value>8192</value>
+  </property>
+
+
+
+
+
+</configuration>

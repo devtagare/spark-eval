@@ -1,0 +1,15 @@
+{
+  "values": [{"name": "app_start_time", "type": "string"},
+    {"name": "apex_wins", "type": "string"},
+    {"name": "apex_lag_avg", "type": "string"},
+    {"name": "apex_lag_sum", "type": "string"},
+    {"name": "apex_speed_pct", "type": "string"},
+    {"name": "apex_store_wins", "type": "string"},
+    {"name": "apex_store_lag_avg", "type": "string"},
+    {"name": "apex_store_lag_sum", "type": "string"},
+    {"name": "apex_store_speed_pct", "type": "string"},
+    {"name": "spark_streaming_wins", "type": "string"},
+    {"name": "spark_streaming_lag_avg", "type": "string"},
+    {"name": "spark_streaming_lag_sum", "type": "string"},
+    {"name": "spark_streaming_speed_pct", "type": "string"}]
+}
